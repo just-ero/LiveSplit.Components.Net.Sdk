@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net4.8.1</TargetFramework>
+
+    <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+
+    <Description>Provides convenience features for LiveSplit component development.</Description>
+    <PackageTags>LiveSplit Component SDK</PackageTags>
+    <PackageType>MSBuildSdk</PackageType>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <NoPackageAnalysis>true</NoPackageAnalysis> -->
+
+    <!-- Enable source generator development -->
+    <!-- <IsRoslynComponent>true</IsRoslynComponent>
+    <RootNamespace>LiveSplit.Components.Net.Sdk</RootNamespace> -->
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+    <RootNamespace>LiveSplit.Components.Sdk</RootNamespace>
+    <TargetFramework>net4.8.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(LsSrcPath)/LiveSplit.Core/LiveSplit.Core.csproj" />
+  </ItemGroup>
+
+</Project>

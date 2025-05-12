@@ -1,0 +1,32 @@
+<Project>
+
+  <!-- Common properties. -->
+  <PropertyGroup>
+    <LangVersion>13</LangVersion>
+
+    <!-- <GenerateDocumentationFile>true</GenerateDocumentationFile> -->
+    <Nullable>enable</Nullable>
+
+    <AnalysisLevel>latest-all</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+  </ItemGroup>
+
+  <!-- Common paths. -->
+  <PropertyGroup>
+    <RootPath>$(MSBuildThisFileDirectory)</RootPath>
+
+    <ImplPath>$(RootPath)/impl</ImplPath>
+    <SrcPath>$(RootPath)/src</SrcPath>
+    <TestPath>$(RootPath)/test</TestPath>
+
+    <LsSrcPath>$(RootPath)/lib/LiveSplit/src</LsSrcPath>
+
+    <ArtifactsPath>$(RootPath)/artifacts</ArtifactsPath>
+  </PropertyGroup>
+
+</Project>

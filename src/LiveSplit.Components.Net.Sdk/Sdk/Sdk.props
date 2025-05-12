@@ -1,0 +1,18 @@
+<Project>
+  <!-- Import component SDK common properties -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\props\LiveSplit.ComponentSdk.props" />
+
+  <!-- Define required properties -->
+  <PropertyGroup>
+    <!-- Description and Version are required to be set by the user -->
+    <_DescriptionPropertyRequired>true</_DescriptionPropertyRequired>
+    <_VersionPropertyRequired>true</_VersionPropertyRequired>
+  </PropertyGroup>
+
+  <!-- Default settings for component projects -->
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <EnableDefaultItems>true</EnableDefaultItems>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>

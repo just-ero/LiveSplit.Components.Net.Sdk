@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net4.8.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+
+    <NoWarn>CA1707;$(NoWarn)</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(LsSrcPath)/LiveSplit.Core/LiveSplit.Core.csproj" />
+
+    <ProjectReference Include="$(SrcPath)/LiveSplit.Components.Net.Sdk.Analyzers/LiveSplit.Components.Net.Sdk.Analyzers.csproj" />
+
+    <ProjectReference Include="$(TestPath)/LiveSplit.Components.Net.Sdk.Testing/LiveSplit.Components.Net.Sdk.Testing.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit.Analyzers" />
+    <PackageReference Include="NUnit3TestAdapter" />
+  </ItemGroup>
+
+</Project>

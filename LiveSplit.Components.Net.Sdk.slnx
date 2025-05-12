@@ -1,0 +1,22 @@
+<Solution>
+
+  <Folder Name="/lib/">
+    <Project Path="lib/LiveSplit/src/LiveSplit.Core/LiveSplit.Core.csproj" />
+    <Project Path="lib/LiveSplit/src/UpdateManager/UpdateManager.csproj" />
+  </Folder>
+
+  <Folder Name="/src/">
+    <Project Path="src/LiveSplit.Components.Net.Sdk/LiveSplit.Components.Net.Sdk.csproj" />
+
+    <Project Path="src/LiveSplit.Components.Net.Sdk.Analyzers/LiveSplit.Components.Net.Sdk.Analyzers.csproj" />
+    <Project Path="src/LiveSplit.Components.Net.Sdk.Shared/LiveSplit.Components.Net.Sdk.Shared.csproj" />
+    <Project Path="src/LiveSplit.Components.Net.Sdk.SourceGenerators/LiveSplit.Components.Net.Sdk.SourceGenerators.csproj" />
+  </Folder>
+
+  <Folder Name="/test/">
+    <Project Path="test/LiveSplit.Components.Net.Sdk.Testing/LiveSplit.Components.Net.Sdk.Testing.csproj" />
+    <Project Path="test/LiveSplit.Components.Net.Sdk.Analyzers.Tests/LiveSplit.Components.Net.Sdk.Analyzers.Tests.csproj" />
+    <Project Path="test/LiveSplit.Components.Net.Sdk.SourceGenerators.Tests/LiveSplit.Components.Net.Sdk.SourceGenerators.Tests.csproj" />
+  </Folder>
+
+</Solution>
