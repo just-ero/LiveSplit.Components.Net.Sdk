@@ -1,7 +1,9 @@
 {
   "files.exclude": {
     "artifacts/": true,
+    "**/bin/": true,
+    "**/obj/": true,
     "lib/": true,
   },
-
+  "dotnet.defaultSolution": "${workspaceFolder}/LiveSplit.Components.Net.Sdk.slnx",
 }
