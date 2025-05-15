@@ -21,10 +21,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     class TestComponent
                         : LiveSplit.Components.Net.Sdk.Testing.ComponentBase
                     {
@@ -44,10 +49,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     static class TestComponent
                     {
 
@@ -55,8 +65,8 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1000")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -69,10 +79,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     abstract class TestComponent
                         : LiveSplit.Components.Net.Sdk.Testing.ComponentBase
                     {
@@ -82,8 +97,8 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1000")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -96,10 +111,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     class TestComponent
                         : LiveSplit.Components.Net.Sdk.Testing.ComponentBase
                     {
@@ -109,8 +129,8 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1001")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -123,10 +143,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     class TestComponent
                     {
                         public TestComponent(LiveSplitState state) { }
@@ -134,8 +159,8 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1002")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -148,10 +173,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     abstract class TestComponent
                         : LiveSplit.Components.Net.Sdk.Testing.ComponentBase
                     {
@@ -161,11 +191,11 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1000")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                     Verifier.Diagnostic("LSSDK1001")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -178,10 +208,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     abstract class TestComponent
                     {
                         public TestComponent(LiveSplitState __) { }
@@ -189,11 +224,11 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1000")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                     Verifier.Diagnostic("LSSDK1002")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -206,10 +241,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     class TestComponent
                     {
                         public TestComponent() { }
@@ -217,11 +257,11 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1001")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                     Verifier.Diagnostic("LSSDK1002")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
             .ConfigureAwait(false);
     }
@@ -234,10 +274,15 @@ public sealed class ComponentFactoryAnalyzerTests
                 source: $$"""
                     using LiveSplit.Components.Sdk;
                     using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
 
                     namespace TestNamespace;
 
-                    [Component(Name = default, Author = default, Version = default, Category = default)]
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
                     abstract class TestComponent
                     {
                         public TestComponent() { }
@@ -245,15 +290,75 @@ public sealed class ComponentFactoryAnalyzerTests
                     """,
                 expected: [
                     Verifier.Diagnostic("LSSDK1000")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                     Verifier.Diagnostic("LSSDK1001")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                     Verifier.Diagnostic("LSSDK1002")
-                    .WithLocation(6, 2)
-                    .WithArguments("TestComponent"),
+                        .WithLocation(7, 2)
+                        .WithArguments("TestComponent"),
                 ])
+            .ConfigureAwait(false);
+    }
+
+    [Test]
+    public async Task Reports1010_ForInvalidVersion()
+    {
+        await Verifier
+            .VerifyAnalyzerAsync(
+                source: $$"""
+                    using LiveSplit.Components.Sdk;
+                    using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
+
+                    namespace TestNamespace;
+
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
+                    class TestComponent
+                        : LiveSplit.Components.Net.Sdk.Testing.ComponentBase
+                    {
+                        public TestComponent(LiveSplitState state)
+                            : base(state) { }
+                    }
+                    """,
+                expected: [
+                    Verifier.Diagnostic("LSSDK1010")
+                        .WithLocation(9, 15)
+                        .WithArguments("1"),
+                ])
+            .ConfigureAwait(false);
+    }
+
+    [Test]
+    public async Task ReportsNothing_ForValidVersion()
+    {
+        await Verifier
+            .VerifyAnalyzerAsync(
+                source: $$"""
+                    using LiveSplit.Components.Sdk;
+                    using LiveSplit.Model;
+                    using LiveSplit.UI.Components;
+
+                    namespace TestNamespace;
+
+                    [Component(
+                        Name = "Test Component",
+                        Version = "1.0",
+                        Author = "John Doe",
+                        Category = ComponentCategory.Other)]
+                    class TestComponent
+                        : LiveSplit.Components.Net.Sdk.Testing.ComponentBase
+                    {
+                        public TestComponent(LiveSplitState state)
+                            : base(state) { }
+                    }
+                    """,
+                expected: [])
             .ConfigureAwait(false);
     }
 }

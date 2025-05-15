@@ -30,8 +30,17 @@ internal partial class ComponentFactoryAnalyzer
         DiagnosticSeverity.Error,
         isEnabledByDefault: true);
 
+    private static readonly DiagnosticDescriptor _rule1010 = new(
+        "LSSDK1010",
+        "CouldNotParseVersion",
+        "'{0}' is not a valid version string",
+        "ComponentFactoryGenerator",
+        DiagnosticSeverity.Error,
+        isEnabledByDefault: true);
+
     public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [
         _rule1000,
         _rule1001,
-        _rule1002];
+        _rule1002,
+        _rule1010];
 }

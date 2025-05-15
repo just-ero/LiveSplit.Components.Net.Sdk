@@ -61,6 +61,15 @@ internal sealed partial class ComponentFactoryGenerator
             return null;
         }
 
+        if (parsedVersion.Build == -1)
+        {
+            parsedVersion = new(parsedVersion.Major, parsedVersion.Minor, 0, 0);
+        }
+        else if (parsedVersion.Revision == -1)
+        {
+            parsedVersion = new(parsedVersion.Major, parsedVersion.Minor, parsedVersion.Build, 0);
+        }
+
         // Optional properties.
         if (!attribute.TryGetNamedArgument("Description", out string? description))
         {
@@ -114,7 +123,7 @@ internal sealed partial class ComponentFactoryGenerator
                 file sealed class {{factoryName}} : global::LiveSplit.UI.Components.IComponentFactory {
                     public string ComponentName => "{{metadata.ComponentName}}";
                     public string Description => "{{metadata.ComponentDescription}}";
-                    public global::System.Version Version => new global::System.Version({{metadata.ComponentVersion.Major}}, {{metadata.ComponentVersion.Minor}}, {{metadata.ComponentVersion.Build}});
+                    public global::System.Version Version => new global::System.Version({{metadata.ComponentVersion.Major}}, {{metadata.ComponentVersion.Minor}}, {{metadata.ComponentVersion.Build}}, {{metadata.ComponentVersion.Revision}});
 
                     public global::LiveSplit.UI.Components.ComponentCategory Category => global::LiveSplit.UI.Components.ComponentCategory.{{metadata.ComponentCategory}};
 

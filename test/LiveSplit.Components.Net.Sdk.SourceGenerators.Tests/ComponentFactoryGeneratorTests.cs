@@ -27,7 +27,7 @@ public sealed class ComponentFactoryGeneratorTests
 
                     [Component(
                         Name = "Test Component",
-                        Version = "1.0.0",
+                        Version = "1.0",
                         Author = "John Doe",
                         Category = ComponentCategory.Other)]
                     class TestComponent
@@ -49,7 +49,7 @@ public sealed class ComponentFactoryGeneratorTests
                         file sealed class TestComponentFactory : global::LiveSplit.UI.Components.IComponentFactory {
                             public string ComponentName => "Test Component";
                             public string Description => "";
-                            public global::System.Version Version => new global::System.Version(1, 0, 0);
+                            public global::System.Version Version => new global::System.Version(1, 0, 0, 0);
 
                             public global::LiveSplit.UI.Components.ComponentCategory Category => global::LiveSplit.UI.Components.ComponentCategory.Other;
 

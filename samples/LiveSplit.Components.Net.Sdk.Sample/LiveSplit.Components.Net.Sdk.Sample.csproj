@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net4.8.1</TargetFramework>
+
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveSplit.Components.Net.Sdk" Version="1.0.0-p.2" />
+  </ItemGroup>
+
+</Project>

@@ -19,4 +19,8 @@
     <Project Path="test/LiveSplit.Components.Net.Sdk.SourceGenerators.Tests/LiveSplit.Components.Net.Sdk.SourceGenerators.Tests.csproj" />
   </Folder>
 
+  <Folder Name="/samples/">
+    <Project Path="samples/LiveSplit.Components.Net.Sdk.Sample/LiveSplit.Components.Net.Sdk.Sample.csproj" />
+  </Folder>
+
 </Solution>

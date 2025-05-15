@@ -1,4 +1,7 @@
+using System;
 using System.Linq;
+
+using LiveSplit.Components.Net.Sdk.Analyzers.Extensions;
 
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -35,11 +38,16 @@ internal sealed partial class ComponentFactoryAnalyzer
             return;
         }
 
+        if (attribute.ApplicationSyntaxReference?.GetSyntax(context.CancellationToken) is not AttributeSyntax attributeSyntax)
+        {
+            return;
+        }
+
         if (symbol.IsAbstract || symbol.IsStatic)
         {
             var diagnostic = Diagnostic.Create(
                 _rule1000,
-                attribute.GetLocation(),
+                attributeSyntax.GetLocation(),
                 context.Symbol.Name);
 
             context.ReportDiagnostic(diagnostic);
@@ -54,7 +62,7 @@ internal sealed partial class ComponentFactoryAnalyzer
         {
             var diagnostic = Diagnostic.Create(
                 _rule1001,
-                attribute.GetLocation(),
+                attributeSyntax.GetLocation(),
                 context.Symbol.Name);
 
             context.ReportDiagnostic(diagnostic);
@@ -64,14 +72,31 @@ internal sealed partial class ComponentFactoryAnalyzer
         {
             var diagnostic = Diagnostic.Create(
                 _rule1002,
-                attribute.GetLocation(),
+                attributeSyntax.GetLocation(),
                 context.Symbol.Name);
 
             context.ReportDiagnostic(diagnostic);
         }
+
+        if (attribute.TryGetNamedArgument("Version", out string? version))
+        {
+            if (!Version.TryParse(version, out _))
+            {
+                var argument = attributeSyntax.ArgumentList!.Arguments
+                    .First(a => a.NameEquals!.Name.Identifier.Text == "Version")
+                    .Expression.GetLocation();
+
+                var diagnostic = Diagnostic.Create(
+                    _rule1010,
+                    argument,
+                    version);
+
+                context.ReportDiagnostic(diagnostic);
+            }
+        }
     }
 
-    private static AttributeSyntax? GetAttribute(SymbolAnalysisContext context)
+    private static AttributeData? GetAttribute(SymbolAnalysisContext context)
     {
         if (context.Compilation.GetTypeByMetadataName(AttributeMetadataName) is not { } attributeSymbol)
         {
@@ -88,9 +113,7 @@ internal sealed partial class ComponentFactoryAnalyzer
             return null;
         }
 
-        return attribute
-            .ApplicationSyntaxReference?
-            .GetSyntax(context.CancellationToken) as AttributeSyntax;
+        return attribute;
     }
 
     private static bool HasRequiredConstructor(SymbolAnalysisContext context, INamedTypeSymbol symbol)

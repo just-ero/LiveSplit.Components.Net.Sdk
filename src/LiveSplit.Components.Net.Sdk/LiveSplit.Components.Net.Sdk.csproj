@@ -3,19 +3,58 @@
   <PropertyGroup>
     <TargetFramework>net4.8.1</TargetFramework>
 
-    <!-- <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <IsTool>true</IsTool>
 
-    <Description>Provides convenience features for LiveSplit component development.</Description>
-    <PackageTags>LiveSplit Component SDK</PackageTags>
-    <PackageType>MSBuildSdk</PackageType>
-    <IncludeBuildOutput>true</IncludeBuildOutput>
-    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-    <NoPackageAnalysis>true</NoPackageAnalysis> -->
-
-    <!-- Enable source generator development -->
-    <!-- <IsRoslynComponent>true</IsRoslynComponent>
-    <RootNamespace>LiveSplit.Components.Net.Sdk</RootNamespace> -->
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+
+    <Author>just-ero</Author>
+    <Copyright>© 2025 just-ero</Copyright>
+    <RepositoryUrl>https://github.com/just-ero/LiveSplit.Components.Net.Sdk</RepositoryUrl>
+    <Version>1.0.0-p.2</Version>
+
+    <PackageDescription>.NET SDK for LiveSplit Component Development</PackageDescription>
+    <PackageId>LiveSplit.Components.Net.Sdk</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>livesplit;livesplit-component;csharp-sourcegenerator;csharp-analyzer;msbuild-sdk</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(SrcPath)/LiveSplit.Components.Net.Sdk.Analyzers/LiveSplit.Components.Net.Sdk.Analyzers.csproj"
+                      ReferenceOutputAssembly="false" />
+    <ProjectReference Include="$(SrcPath)/LiveSplit.Components.Net.Sdk.Shared/LiveSplit.Components.Net.Sdk.Shared.csproj"
+                      ReferenceOutputAssembly="false" />
+    <ProjectReference Include="$(SrcPath)/LiveSplit.Components.Net.Sdk.SourceGenerators/LiveSplit.Components.Net.Sdk.SourceGenerators.csproj"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(OutputPath)/LiveSplit.Components.Net.Sdk.Analyzers.dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs" />
+    <None Include="$(OutputPath)/LiveSplit.Components.Net.Sdk.SourceGenerators.dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs" />
+
+    <TfmSpecificPackageFile Include="$(OutputPath)/LiveSplit.Components.Net.Sdk.Shared.dll"
+                            Pack="true"
+                            PackagePath="lib/$(TargetFramework)" />
+
+    <TfmSpecificPackageFile Include="$(OutputPath)/LiveSplit.Core.dll"
+                            Pack="true"
+                            PackagePath="lib/$(TargetFramework)" />
+
+    <TfmSpecificPackageFile Include="$(OutputPath)/UpdateManager.dll"
+                            Pack="true"
+                            PackagePath="lib/$(TargetFramework)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LiveSplit.Components.Net.Sdk.props" Pack="true" PackagePath="build" />
+  </ItemGroup>
 
 </Project>
